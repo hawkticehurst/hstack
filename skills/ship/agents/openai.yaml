@@ -1,0 +1,3 @@
+# Codex ignores disable-model-invocation; this keeps the skill manual-only there too.
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,17 @@
+{
+	"name": "hstack",
+	"private": true,
+	"description": "Agent skills that make coding agents check their work, cut what isn't needed, and show the result.",
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"check": "node scripts/check.mjs",
+		"fix": "node scripts/check.mjs --fix",
+		"test": "node --test"
+	},
+	"dependencies": {
+		"@napi-rs/canvas": "^1.1.0"
+	}
+}
