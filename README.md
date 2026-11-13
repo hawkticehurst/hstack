@@ -46,7 +46,14 @@ Agent skills that make coding agents check their work, cut what isn't needed, an
 | [`work-dispatcher`](skills/work-dispatcher/SKILL.md) | Find the issues assigned to you across your repositories, decide which you really own, and start one isolated agent session (or prepared worktree) per issue. |
 | [`end-of-day`](skills/end-of-day/SKILL.md) | Report the work you completed on a day, across any repositories, and collect the screenshots embedded in those PRs. |
 
-The usual flow for a change: Build it (with `diagnose` for bugs), `preflight`, `cpr`, `babysit`, then a human merges. `ship` runs that chain on its own.
+### Design
+
+| Skill | Use it to |
+|---|---|
+| [`distill`](skills/distill/SKILL.md) | Reduce a large, growing pile of product context (docs, issues, research, chats, data, code) to evidence-backed primitives: Needs, audiences, words, objects, concepts, constraints, assumptions, principles, and open questions. Rerun it as material arrives. |
+| [`shape`](skills/shape/SKILL.md) | Turn a distilled problem into three to five genuinely different design directions, help you choose, and write a prototype brief for each pick. |
+
+The usual flow for a change: Build it (with `diagnose` for bugs), `preflight`, `cpr`, `babysit`, then a human merges. `ship` runs that chain on its own. For a design problem: `distill` (again whenever new material arrives), `shape`, prototype, then add what testing taught you back into `distill`.
 
 ## Install
 
@@ -83,6 +90,20 @@ node skills/preflight/scripts/preflight-state.mjs stats --days 30
 ```
 
 `preflight-state size` splits the diff into production code and tests and flags files that cross 1000 lines. `preflight-state gates` lists test, CI, and config hunks, and tags the ones that may weaken a gate: Skipped tests, loosened assertions, raised timeouts, suppression comments, and CI bypasses.
+
+## The design ledger
+
+`distill` and `shape` keep each topic in `~/.hstack/design/<topic>/` (set `HSTACK_DESIGN_HOME` to move it), outside your product repositories, because the material is often internal. Each topic is its own git repository, with one commit per run.
+
+- `frame.md` is written with you: The decision, outcome, appetite, scope, and sources to watch.
+- `ledger/` is an append-only record of sources, quotes, items, and links. The ledger script checks every quote word for word against `snapshots/`, which keeps the text of each source version, so a changed source marks the claims that quoted it as stale.
+- `views/`, `README.md`, and `CHANGELOG.md` are generated, with Mermaid diagrams of audiences and needs, objects and concepts, assumptions, and directions.
+- `briefs/` holds shape's prototype briefs.
+
+```sh
+node skills/distill/scripts/ledger.mjs topics
+node skills/distill/scripts/ledger.mjs list --topic <topic>
+```
 
 ## Develop
 

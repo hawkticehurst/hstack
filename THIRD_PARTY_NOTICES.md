@@ -138,6 +138,7 @@ SOFTWARE.
 - `skills/handoff` adapts `handoff`.
 - `skills/plain` adapts `wait-what`.
 - `skills/reflect` draws on `retro` and `writing-for-agents`.
+- `skills/distill` draws on `wayfinder` (the topic map as an index of decisions; open questions as a frontier) and adapts the glossary rules of `domain-modeling`'s `GLOSSARY-FORMAT.md` (pick one word and list the others to avoid; define what a term is).
 - `skills/cpr` draws on the "merge danger" line in `pr`.
 
 ```
@@ -171,6 +172,7 @@ SOFTWARE.
 - `skills/diagnose` draws on `systematic-debugging` (condition-based waiting, finding a polluting test, stopping after three failed fixes).
 - `skills/preflight/reviewers/verifier.md` and `skills/ship` draw on `subagent-driven-development` (a stated rationale never closes a finding; recorded rulings).
 - `skills/ship` draws on `verification-before-completion` (prove a new test can fail).
+- `skills/distill` and `skills/shape` draw on `brainstorming` (draft answers from what you already know before asking; a fresh reader checks the written result).
 
 ```
 MIT License
@@ -236,6 +238,8 @@ SOFTWARE.
 - `skills/diagnose` and `skills/babysit` draw on `ce-debug` (causal-chain gate, divergent fixes).
 - `skills/trim/reviewer.md` draws on `ce-simplify-code` and its review personas (protect the proof tests; verify "do not remove" claims).
 - `skills/babysit` draws on `ce-resolve-pr-feedback` and `ce-babysit-pr` (untrusted comment text; feedback before CI).
+- `skills/distill` adapts `ce-ideate`'s `user-research-artifacts.md` (one distilling agent per large source that returns a gist, not the contents; the inclusion test) and `ce-brainstorm`'s `settled-decisions.md` (the `user-directed` and `user-approved` provenance classes; no self-settling) and `blindspot-pass.md` (a three-to-seven-item decision map for unfamiliar territory).
+- `skills/shape` adapts `ce-ideate`'s `decomposition.md` (axis criteria: Derived from the topic, independent, at one level, named in the topic's words) and draws on `ce-prototype` (never fake the dimension being tested).
 
 ```
 MIT License
@@ -360,5 +364,10 @@ These projects shaped hstack through ideas only. No text was adapted.
 - [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) (Apache-2.0): `pr-review-toolkit`'s silent-failure and comment-accuracy checks, and `code-review`'s per-finding validation.
 - [openai/skills](https://github.com/openai/skills) (Apache-2.0): `define-goal`, `playwright-interactive`'s QA inventory, and `yeet`'s rule to keep existing PR images.
 - [mitsuhiko/agent-stuff](https://github.com/mitsuhiko/agent-stuff) (Apache-2.0): Fail-fast error handling and non-blocking reviewer callouts.
-- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills): `simplify-ignore` markers.
-- [microsoft/vscode](https://github.com/microsoft/vscode) `.github/skills`: The "unclear causal link" scope rule from `code-review`, and `feedback-learning`.
+- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills): `simplify-ignore` markers, and `interview-me`'s stated guess with every question.
+- [microsoft/vscode](https://github.com/microsoft/vscode) `.github/skills`: The "unclear causal link" scope rule from `code-review`, `feedback-learning`, and `design-philosophy`'s values, principles, and moves, which shape uses as design guidance.
+- [Owl-Listener/designer-skills](https://github.com/Owl-Listener/designer-skills): `affinity-diagram`'s source coverage and single-source flags, which informed distill's confidence rule.
+- [humanlayer/humanlayer](https://github.com/humanlayer/humanlayer) (Apache-2.0): Neutral research questions that describe the code before any change is discussed, used by distill's product reader.
+- [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache-2.0): `product-brainstorming`'s rule to include an option that removes something, used by shape.
+- [Andrej Karpathy's LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): Immutable sources, an agent-maintained index, and an append-only log, which shaped distill's topic folder.
+- Design methods behind distill and shape: Job stories (Alan Klement), opportunity solution trees (Teresa Torres), concept design (Daniel Jackson), object-oriented UX (Sophia Prater), Shape Up's appetite, breadboards, rabbit holes, and no-gos (Ryan Singer), Cynefin (Dave Snowden), assumption mapping (David Bland), the premortem (Gary Klein), morphological analysis (Fritz Zwicky), and Nielsen's usability heuristics.

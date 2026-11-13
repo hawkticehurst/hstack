@@ -9,7 +9,7 @@
 			"name": "hstack",
 			"source": "./",
 			"description": "Agent skills that make coding agents check their work, cut what isn't needed, and show the result.",
-			"version": "0.1.0",
+			"version": "0.2.0",
 			"author": {
 				"name": "Hawk Ticehurst"
 			},
